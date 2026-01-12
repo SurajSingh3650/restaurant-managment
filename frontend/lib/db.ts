@@ -1,6 +1,7 @@
 // AI assisted development
 import { promises as fs } from "fs";
 import path from "path";
+import { randomUUID } from "crypto";
 import { User, Restaurant } from "@/types";
 
 const DATA_DIR = path.join(process.cwd(), "data");
@@ -59,7 +60,7 @@ export async function createUser(user: Omit<User, "id" | "createdAt">): Promise<
   const users = await getUsers();
   const newUser: User = {
     ...user,
-    id: crypto.randomUUID(),
+    id: randomUUID(),
     createdAt: new Date().toISOString(),
   };
   users.push(newUser);
@@ -100,7 +101,7 @@ export async function createRestaurant(
   const restaurants = await getRestaurants();
   const newRestaurant: Restaurant = {
     ...restaurant,
-    id: crypto.randomUUID(),
+    id: randomUUID(),
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
   };

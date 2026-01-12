@@ -84,7 +84,7 @@ export default function EditRestaurantPage() {
   const addMenuItem = () => {
     if (!restaurant) return;
     const newItem: MenuItem = {
-      id: crypto.randomUUID(),
+      id: `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
       name: "",
       description: "",
       price: 0,
